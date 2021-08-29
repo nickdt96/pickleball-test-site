@@ -6,6 +6,9 @@ export const brand: any = {
       },
       secondary: {
         main: '#f50057',
+      },
+      common: {
+        black: "#FFF"
       }
     },
     spacing: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
@@ -16,4 +19,7 @@ export const brand: any = {
         },
       }
     },
+    shape: {
+      borderRadius: "8px",
+    }
   };

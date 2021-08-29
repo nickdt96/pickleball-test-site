@@ -1,7 +1,8 @@
+import PageContainer from "../components/common/PageContainer";
 
 const Library = () => {
     return (
-      <>Library</>
+      <PageContainer>Library</PageContainer>
     )
 }
 

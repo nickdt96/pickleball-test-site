@@ -1,8 +1,11 @@
-import { Box } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 
-const PageContainer = ({children} : {children: any;}) => {
+const PageContainer = ({ children, title }: { children: any; title?: string; }) => {
   return (
     <Box m={4}>
+      <Typography variant="h5" color="primary">
+        {title}
+      </Typography>
       {children}
     </Box>
   )

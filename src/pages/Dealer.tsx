@@ -1,7 +1,8 @@
+import PageContainer from "../components/common/PageContainer";
 
 const Dealer = () => {
     return (
-      <>Dealer</>
+      <PageContainer>Dealer</PageContainer>
     )
 }
 

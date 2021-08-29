@@ -1,7 +1,7 @@
 import { AppBar, Box, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { RccButton } from "./Buttons";
+import { RccNavButton } from "./Buttons";
 
 const Header = () => {
 
@@ -38,7 +38,7 @@ const Header = () => {
       </Menu>
 
       <Toolbar>
-        <Box display="flex" flexDirection="row" width={1} alignItems="center">
+        <Box display="flex" flexDirection="row" width={1} alignItems="center" justifyContent="center">
           <Box flexGrow={1} display="flex">
             <Typography variant="h5" noWrap>
               <Box m={4}>
@@ -47,24 +47,24 @@ const Header = () => {
             </Typography>
           </Box>
           <Box display="flex" justifyContent="space-between">
-            <RccButton onClick={(event: any) => handleClick(event, "home")}>
+            <RccNavButton onClick={(event: any) => handleClick(event, "home")}>
               Home
-            </RccButton>
-            <RccButton onClick={(event: any) => handleClick(event, "about")}>
+            </RccNavButton>
+            <RccNavButton onClick={(event: any) => handleClick(event, "about")}>
               About
-            </RccButton>
-            <RccButton onClick={(event: any) => handleClick(event, "shop")}>
+            </RccNavButton>
+            <RccNavButton onClick={(event: any) => handleClick(event, "shop")}>
               Shop
-            </RccButton>
-            <RccButton onClick={(event: any) => handleClick(event, "dealer")}>
+            </RccNavButton>
+            <RccNavButton onClick={(event: any) => handleClick(event, "dealer")}>
               Dealer
-            </RccButton>
-            <RccButton onClick={(event: any) => handleClick(event, "library")}>
+            </RccNavButton>
+            <RccNavButton onClick={(event: any) => handleClick(event, "library")}>
               Library
-            </RccButton>
-            <RccButton onClick={(event: any) => handleClick(event, "contact")}>
+            </RccNavButton>
+            <RccNavButton onClick={(event: any) => handleClick(event, "contact")}>
               Contact
-            </RccButton>
+            </RccNavButton>
           </Box>
         </Box>
       </Toolbar>
