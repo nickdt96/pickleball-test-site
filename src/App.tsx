@@ -12,6 +12,8 @@ import Contact from "./pages/Contact";
 import { Box } from "@material-ui/core";
 import Client from "shopify-buy";
 import Cart from "./pages/Cart";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
 
@@ -19,19 +21,21 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Header />
-        {/*<Welcome />*/}
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/about" component={About}/>
-          <Route exact path="/shop" component={Shop}/>
-          <Route exact path="/dealer" component={Dealer}/>
-          <Route exact path="/library" component={Library}/>
-          <Route exact path="/contact" component={Contact}/>
-          <Route exact path="/cart" component={Cart}/>
-        </Switch>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+          {/*<Welcome />*/}
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/about" component={About}/>
+            <Route exact path="/shop" component={Shop}/>
+            <Route exact path="/dealer" component={Dealer}/>
+            <Route exact path="/library" component={Library}/>
+            <Route exact path="/contact" component={Contact}/>
+            <Route exact path="/cart" component={Cart}/>
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     </ThemeProvider>
   );
 }

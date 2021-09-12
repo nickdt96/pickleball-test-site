@@ -1,14 +1,14 @@
 export const brand: any = {
     palette: {
-      type: 'light',
+      type: "light",
       primary: {
-        main: '#434858',
+        main: "#3c3b6e",
       },
       secondary: {
-        main: '#f50057',
+        main: "#b22234",
       },
       common: {
-        black: "#FFF"
+        black: "#fff"
       }
     },
     spacing: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
