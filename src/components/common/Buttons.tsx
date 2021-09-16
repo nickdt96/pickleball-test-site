@@ -78,3 +78,23 @@ export const RccCancelButton = ({ children, onClick }: { children: any; onClick?
     </Button>
   )
 }
+
+export const RccActionButton = ({ children, onClick }: { children: any; onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void }) => {
+  return (
+    <Button
+      fullWidth
+      variant="outlined"
+      style={{
+        height: "30px",
+        padding: brand.spacing[3],
+        marginRight: brand.spacing[1]
+      }}
+      color="primary"
+      onClick={onClick}
+    >
+      <Typography variant="subtitle2">
+        {children}
+      </Typography>
+    </Button>
+  )
+}

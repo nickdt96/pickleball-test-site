@@ -9,7 +9,7 @@ export interface ShopifyState {
     client: Client | null;
     shop: Shop | null;
     cart: Cart | null;
-    products: Array<Product> | null;
+    products: Product[] | null;
 }
 
 export interface ClientCreatedAction {

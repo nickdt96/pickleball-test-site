@@ -3,48 +3,39 @@ import ProductComponent from "./ProductComponent";
 import { useSelector } from 'react-redux';
 import { Product } from "shopify-buy";
 import { RootState } from "../../store";
-import { Box, Grid, TablePagination } from "@material-ui/core";
+import { Box, Button, Grid, Link, TablePagination, Typography } from "@material-ui/core";
+import { RccFormButton, RccNavButton, RccActionButton } from "../common/Buttons";
 
-export default function Products() {
+export default function Products({ loadMoreItems }: { loadMoreItems: () => void }) {
   const { products } = useSelector((state: RootState) => state.shopify);
-
-  //console.log(`  products.length -> ${JSON.stringify(products ? products.length : 0)}`)
-  console.log(`  products -> ${JSON.stringify(products)}`)
-
 
   if (products) {
     return (
       <Box mt={5}>
-          <Grid container>
-            <Grid xs={2}>
-              Categories Go Here
-            </Grid>
-            <Grid xs={10} style={{ minHeight: "200px", maxHeight: "200px"}}>
-              <TablePagination
-                component="div"
-                count={products.length}
-                page={0}
-                onPageChange={() => console.log("pageChange")}
-                rowsPerPage={2}
-                onRowsPerPageChange={() => console.log("pageChange")}
-                rowsPerPageOptions={[2, 10, 25, 50]}
-              />
-              <Grid container>
-              
-              {products
-                  .map((product: Product) => {
-                    return (
-                      <ProductComponent
-                        key={product.id}
-                        product={product}
-                      />
-                    );
-                  })
-                  .reverse()}
-              </Grid>
-            </Grid>
+        <Grid container>
+          <Grid xs={2}>
+            Categories Go Here
           </Grid>
-        </Box>
+          <Grid xs={10} style={{ minHeight: "200px", maxHeight: "200px" }}>
+            <Grid container>
+              {products
+                .map((product: Product) => {
+                  return (
+                    <ProductComponent
+                      key={product.id}
+                      product={product}
+                    />
+                  );
+                })
+                .reverse()}
+
+            </Grid>
+            <Box display="flex" flexDirection="row" mr={4}>
+              <Link onClick={() => loadMoreItems()} underline="always" style={{ cursor: "pointer" }}>Load More items</Link>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
     );
   } else {
     return <p>Loading...</p>;
