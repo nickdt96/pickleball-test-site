@@ -1,6 +1,5 @@
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { brand } from "./constants/brand";
-import Welcome from "./components/common/Welcome";
 import Header from "./components/common/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
@@ -9,11 +8,10 @@ import Shop from "./pages/Shop";
 import Dealer from "./pages/Dealer";
 import Library from "./pages/Library";
 import Contact from "./pages/Contact";
-import { Box } from "@material-ui/core";
-import Client from "shopify-buy";
 import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import Footer from "./components/common/Footer";
 
 function App() {
 
@@ -24,8 +22,7 @@ function App() {
       <Provider store={store}>
         <BrowserRouter>
           <Header />
-          {/*<Welcome />*/}
-          <Switch>
+          <Switch>    
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About}/>
             <Route exact path="/shop" component={Shop}/>
@@ -34,6 +31,7 @@ function App() {
             <Route exact path="/contact" component={Contact}/>
             <Route exact path="/cart" component={Cart}/>
           </Switch>
+          <Footer />
         </BrowserRouter>
       </Provider>
     </ThemeProvider>
