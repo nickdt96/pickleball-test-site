@@ -1,39 +1,46 @@
 import { Box, Typography } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import { RccFormButton } from "../components/common/Buttons";
 import HomePageImage from "../components/common/HomePageImage";
-import { brand } from "../constants/brand";
+import { brand, fontWeights } from "../constants/brand";
 
 const Home = () => {
 
+    const history = useHistory();
+
     // TODO - fix the header + the placement of the info box.  Link the Contact Us functionality to the contact form
-    
+
     return (
       <HomePageImage>
-        <Box mx={6}>
+        <Box mx={{ xs: 1, md: 6 }} p={{ xs: 1, md: 9 }} display="flex" alignItems="center" justifyContent="center">
           <Box
             bgcolor="white"
-            width={1/2}
+            width={{ xs: 1, md: 4/5 }}
             style={{
               opacity: "0.8"
             }}
             display="flex"
-            justifySelf="center"
+            justifyContent="center"
             alignItems="center"
-            textAlign="left"
             borderRadius={brand.shape.borderRadius}
-            p={4}
+            p={6}
+            mt={2} 
           >
-            <Box style={{ opacity: "1" }} alignItems="center">
-              <Typography variant="h4">
+            <Box style={{ opacity: "1" }} justifyItems="center" display="center" alignContent="center">
+              <Typography variant="h2" style={{ fontWeight: fontWeights.bold }}>
                 Roberson Cartridge Company
               </Typography>
-              <Typography variant="h6">
-                We sell quality brass cartridges for any firearm.
-              </Typography>
-              <Box width={1/2}>
-                <RccFormButton>
-                  Contact Us
-                </RccFormButton>
+              <Box justifyContent="center" display="flex">
+                <Typography variant="h5">
+                  We sell quality brass cartridges for any firearm.
+                </Typography>
+              </Box>
+              <Box justifyContent="center" display="flex" mt={6}>
+                <Box width={{ xs: 1, md: 1/3 }}>
+                  <RccFormButton onClick={() => history.push("/contact")}>
+                    Contact Us
+                  </RccFormButton>
+                </Box>
               </Box>
             </Box>
           </Box>

@@ -1,12 +1,18 @@
-import { Box, Typography } from "@material-ui/core";
+import { Box, Divider, Typography } from "@material-ui/core";
+import { brand, fontWeights } from "../../constants/brand";
 
 const PageContainer = ({ children, title }: { children: any; title?: string; }) => {
   return (
     <Box m={4}>
-      <Typography variant="h5" color="primary">
-        {title}
+      <Typography variant="h3" color="primary" style={{ fontWeight: fontWeights.bold }}>
+        <Box mb={3}>
+          {title}
+        </Box>
+        <Divider />
       </Typography>
-      {children}
+      <Box py={5}>
+        {children}
+      </Box>
     </Box>
   )
 }

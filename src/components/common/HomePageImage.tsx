@@ -13,8 +13,8 @@ const HomePageImage = (props: { children: any; }) => {
       <Box 
         style={{ 
           width: "100%",
-          height: "100vh",
-          background: "cover",
+          minHeight: "100vh",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundImage: `url(${theme.breakpoints.up('md') ? backgroundImage : backgroundImageMobile})`,
         }}

@@ -1,7 +1,9 @@
 import { AppBar, Box, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { RccNavButton } from "./Buttons";
+import logo from "../../assets/images/logo.png"
 
 const Header = () => {
 
@@ -32,11 +34,11 @@ const Header = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem>About Us</MenuItem>
-        <MenuItem>Traditional Brass</MenuItem>
-        <MenuItem>Our Brass</MenuItem>
-        <MenuItem>Our Process</MenuItem>
-        <MenuItem>Services</MenuItem>
+        <MenuItem onClick={() => history.push("/about")}>About Us</MenuItem>
+        <MenuItem onClick={() => history.push("/about")}>Traditional Brass</MenuItem>
+        <MenuItem onClick={() => history.push("/about")}>Our Brass</MenuItem>
+        <MenuItem onClick={() => history.push("/about")}>Our Process</MenuItem>
+        <MenuItem onClick={() => history.push("/about")}>Services</MenuItem>
       </Menu>
 
       <Toolbar>
@@ -44,7 +46,7 @@ const Header = () => {
           <Box flexGrow={1} display="flex">
             <Typography variant="h5" noWrap>
               <Box m={4}>
-                RCC Brass
+                <img src={logo} alt="" />
               </Box>
             </Typography>
           </Box>
@@ -67,6 +69,7 @@ const Header = () => {
             <RccNavButton onClick={(event: any) => handleClick(event, "contact")}>
               Contact
             </RccNavButton>
+            <AccountCircleIcon />
           </Box>
         </Box>
       </Toolbar>
