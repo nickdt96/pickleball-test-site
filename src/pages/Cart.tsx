@@ -1,8 +1,9 @@
 import PageContainer from "../components/common/PageContainer";
+import CartComponent from "../components/shop/Cart";
 
 const Cart = () => {
     return (
-      <PageContainer>Load Shopify Cart Here</PageContainer>
+      <PageContainer><CartComponent /></PageContainer>
     )
 }
 

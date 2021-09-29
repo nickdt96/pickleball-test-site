@@ -1,9 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box } from "@material-ui/core";
+import { Box, Grid, Typography } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import PageContainer from "../components/common/PageContainer";
 import ContactForm from "../components/contact/ContactForm";
 import * as yup from "yup";
+import { brand } from "../constants/brand";
 
 const Dealer = () => {
   const validationSchema = yup.object({
@@ -27,24 +28,47 @@ const Dealer = () => {
   const onSubmit = (data: any) => console.log(data);
   return (
     <PageContainer>
-      <Box mb={6}>
-        If you are a dealer interested in reselling cartridges from RCC Brass,
-        please complete and send the application form below. Upon approval, you
-        will be issued a login which will provide you with wholesale pricing in
-        our online shop. If you have any questions about becoming a dealer,
-        please contact us as follows: Email: jeff@rccbrass.com Phone: 806)
-        329-3130
-      </Box>
-      <Box mb={9}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {" "}
-          <ContactForm
-            formControl={control}
-            errors={errors}
-            dealerForm={true}
-          />
-        </form>
-      </Box>
+      <Grid container>
+        <Grid xs={12} md={5}>
+          <Box mb={6} mx={4}>
+            <Typography variant="h5">
+              Interested in Reselling RCC Brass Cartridges?
+            </Typography>
+            <Typography variant="body1">
+              Please complete and send the application form. Upon approval, you
+              will be issued a login which will provide you with wholesale
+              pricing in our online shop. <br />
+              <br /> If you have any questions about becoming a dealer, please
+              contact us as follows: <br />
+              <br />
+              Email: <a href="mailto: jeff@rccbrass.com">jeff@rccbrass.com</a>
+              <br />
+              Phone: <a href="tel:+18063293130">(806) 329-3130</a>
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid xs={12} md={7}>
+          <Box
+            mb={9}
+            style={{
+              border: `1px solid #CCC`,
+              borderRadius: brand.shape.borderRadius
+            }}
+            mx={4}
+          >
+            <Box p={10}>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                {" "}
+                <ContactForm
+                  formControl={control}
+                  errors={errors}
+                  dealerForm={true}
+                />
+              </form>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
     </PageContainer>
   );
 };

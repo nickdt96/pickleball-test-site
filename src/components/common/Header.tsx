@@ -69,6 +69,9 @@ const Header = () => {
             <RccNavButton onClick={(event: any) => handleClick(event, "contact")}>
               Contact
             </RccNavButton>
+            <RccNavButton onClick={(event: any) => handleClick(event, "cart")}>
+              Cart
+            </RccNavButton>
             <AccountCircleIcon />
           </Box>
         </Box>

@@ -11,6 +11,7 @@ import Products from "./Products";
 import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+//import Client from 'graphql-js-client';
 
 const ProductListing = () => {
 
@@ -53,8 +54,21 @@ const ProductListing = () => {
 
     const shop = await client.shop.fetchInfo();
     store.dispatch({ type: SHOP_INFO_FETCHED, payload: { shop } });
-
     console.log(`shop -> ${JSON.stringify(shop)}`);
+
+
+    client.checkout.create().then((res) => {
+      console.log(` res -> checkout create -> ${JSON.stringify(res)}`);
+    });
+
+    //client.checkout.addLineItems("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8wYTE5MTY3OWM4ZmJmMGVjNzNiMDIwMWJmODJhNmZkNT9rZXk9MGViNGMwNTFhNWI1ZjFhMGQ4MzI4ZDg3YjNlZGQzMDI=",[{ variantId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY5MDgxMDQyNzgxOTM=", quantity: 1 }]);
+
+    client.checkout.addLineItems("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8wYTE5MTY3OWM4ZmJmMGVjNzNiMDIwMWJmODJhNmZkNT9rZXk9MGViNGMwNTFhNWI1ZjFhMGQ4MzI4ZDg3YjNlZGQzMDI=", [{variantId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MDYwNjUwNDYxNjExMw==", quantity: 22}])
+      .then((checkoutAdd) => {
+        console.log(` checkoutAdd -> ${JSON.stringify(checkoutAdd)}`);
+      });
+
+    console.log(client.checkout.fetch("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8wYTE5MTY3OWM4ZmJmMGVjNzNiMDIwMWJmODJhNmZkNT9rZXk9MGViNGMwNTFhNWI1ZjFhMGQ4MzI4ZDg3YjNlZGQzMDI="));
   }
 
 

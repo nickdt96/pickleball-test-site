@@ -4,7 +4,7 @@ import { RootState } from "../../store";
 import { setCartOpen } from "../../store/cartUI/actions";
 import { useSelector } from "react-redux";
 
-export default function Cart() {
+export default function CartComponent() {
     const shopify = useSelector((state: RootState) => state.shopify);
     const cartUI = useSelector((state: RootState) => state.cartUI);
     const { cart } = shopify;
