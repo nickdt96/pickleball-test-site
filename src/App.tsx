@@ -4,6 +4,7 @@ import Header from "./components/common/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import AboutUs from "./pages/AboutUs";
 import Shop from "./pages/Shop";
 import Dealer from "./pages/Dealer";
 import Library from "./pages/Library";
@@ -25,6 +26,11 @@ function App() {
           <Switch>    
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About}/>
+              <Route exact path="/about-us" component={AboutUs}/>
+              <Route exact path="/traditional-brass" component={Cart}/>
+              <Route exact path="/our-brass" component={Cart}/>
+              <Route exact path="/our-processes" component={Cart}/>
+              <Route exact path="/services" component={Cart}/>
             <Route exact path="/shop" component={Shop}/>
             <Route exact path="/dealer" component={Dealer}/>
             <Route exact path="/library" component={Library}/>
