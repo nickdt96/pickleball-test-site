@@ -25,13 +25,13 @@ const Contact = () => {
   
   return (
     <PageContainer>
-      <Box flexDirection="row" width={ 1 / 2} alignItems="center" justifyContent="center" 
+      <Box flexDirection="row" width={{ xs: 1, md: 1/2 }} alignItems="center" justifyContent="center" 
         style={{
           border: `1px solid #CCC`,
           borderRadius: brand.shape.borderRadius
         }}
       >
-        <Box p={10}>
+        <Box p={{ xs: 4, md: 10 }}>
           <form onSubmit={handleSubmit(onSubmit)}> 
             <ContactForm formControl={control} errors={errors}/>
           </form>

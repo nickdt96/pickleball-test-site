@@ -13,10 +13,12 @@ export default function Products({ loadMoreItems }: { loadMoreItems: () => void 
     return (
       <Box mt={5}>
         <Grid container>
-          <Grid xs={2}>
+          <Grid xs={12} md={2}>
+            <Box mb={3}>
             Categories Go Here
+            </Box>
           </Grid>
-          <Grid xs={10} style={{ minHeight: "200px", maxHeight: "200px" }}>
+          <Grid xs={12} md={10} style={{ minHeight: "200px", maxHeight: "200px" }}>
             <Grid container>
               {products
                 .map((product: Product) => {

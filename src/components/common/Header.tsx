@@ -1,24 +1,30 @@
-import { AppBar, Box, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {
+  AppBar,
+  Box,
+  Hidden,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography
+} from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { RccNavButton } from "./Buttons";
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/logo.png";
+import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = () => {
-
   // TODO - Collapse the items into a hamburger menu for mobile.  mmmkay?
 
   const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event: any, page: string) => {
-    if (page === "about") {
-      setAnchorEl(event.currentTarget);
-    } else {
-      history.push(`/${page === "home" ? "" : page}`);
-    }
+    history.push(`/${page === "home" ? "" : page}`);
   };
+
+  const handleMenuClick = () => {};
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -26,23 +32,30 @@ const Header = () => {
 
   return (
     <AppBar position="static">
-      
       <Menu
         id="about-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        style={{ padding: "300px"}}
       >
-        <MenuItem onClick={() => history.push("/about")}>About Us</MenuItem>
-        <MenuItem onClick={() => history.push("/about")}>Traditional Brass</MenuItem>
-        <MenuItem onClick={() => history.push("/about")}>Our Brass</MenuItem>
-        <MenuItem onClick={() => history.push("/about")}>Our Process</MenuItem>
-        <MenuItem onClick={() => history.push("/about")}>Services</MenuItem>
+        <MenuItem onClick={() => history.push("/")}>Home</MenuItem>
+        <MenuItem onClick={() => history.push("/about")}>About</MenuItem>
+        <MenuItem onClick={() => history.push("/shop")}>Shop</MenuItem>
+        <MenuItem onClick={() => history.push("/dealer")}>Dealer</MenuItem>
+        <MenuItem onClick={() => history.push("/library")}>Library</MenuItem>
+        <MenuItem onClick={() => history.push("/contact")}>Contact</MenuItem>
       </Menu>
 
       <Toolbar>
-        <Box display="flex" flexDirection="row" width={1} alignItems="center" justifyContent="center">
+        <Box
+          display="flex"
+          flexDirection="row"
+          width={1}
+          alignItems="center"
+          justifyContent="center"
+        >
           <Box flexGrow={1} display="flex">
             <Typography variant="h5" noWrap>
               <Box m={4}>
@@ -51,33 +64,55 @@ const Header = () => {
             </Typography>
           </Box>
           <Box display="flex" justifyContent="space-between">
-            <RccNavButton onClick={(event: any) => handleClick(event, "home")}>
-              Home
-            </RccNavButton>
-            <RccNavButton onClick={(event: any) => handleClick(event, "about")}>
-              About
-            </RccNavButton>
-            <RccNavButton onClick={(event: any) => handleClick(event, "shop")}>
-              Shop
-            </RccNavButton>
-            <RccNavButton onClick={(event: any) => handleClick(event, "dealer")}>
-              Dealer
-            </RccNavButton>
-            <RccNavButton onClick={(event: any) => handleClick(event, "library")}>
-              Library
-            </RccNavButton>
-            <RccNavButton onClick={(event: any) => handleClick(event, "contact")}>
-              Contact
-            </RccNavButton>
-            <RccNavButton onClick={(event: any) => handleClick(event, "cart")}>
-              Cart
-            </RccNavButton>
-            <AccountCircleIcon />
+            <Hidden mdUp>
+              <MenuIcon
+                fontSize="large"
+                onClick={(event: any) => setAnchorEl(event.currentTarget)}
+              />
+            </Hidden>
+            <Hidden smDown>
+              <RccNavButton
+                onClick={(event: any) => handleClick(event, "home")}
+              >
+                Home
+              </RccNavButton>
+              <RccNavButton
+                onClick={(event: any) => handleClick(event, "about")}
+              >
+                About
+              </RccNavButton>
+              <RccNavButton
+                onClick={(event: any) => handleClick(event, "shop")}
+              >
+                Shop
+              </RccNavButton>
+              <RccNavButton
+                onClick={(event: any) => handleClick(event, "dealer")}
+              >
+                Dealer
+              </RccNavButton>
+              <RccNavButton
+                onClick={(event: any) => handleClick(event, "library")}
+              >
+                Library
+              </RccNavButton>
+              <RccNavButton
+                onClick={(event: any) => handleClick(event, "contact")}
+              >
+                Contact
+              </RccNavButton>
+              <ShoppingCartIcon
+                
+                onClick={(event: any) => handleClick(event, "cart")}
+              >
+                Cart
+              </ShoppingCartIcon>
+            </Hidden>
           </Box>
         </Box>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -30,7 +30,7 @@ const Dealer = () => {
     <PageContainer>
       <Grid container>
         <Grid xs={12} md={5}>
-          <Box mb={6} mx={4}>
+          <Box mb={6}>
             <Typography variant="h5">
               Interested in Reselling RCC Brass Cartridges?
             </Typography>
@@ -54,9 +54,8 @@ const Dealer = () => {
               border: `1px solid #CCC`,
               borderRadius: brand.shape.borderRadius
             }}
-            mx={4}
           >
-            <Box p={10}>
+            <Box p={{ xs: 4, md: 10 }}>
               <form onSubmit={handleSubmit(onSubmit)}>
                 {" "}
                 <ContactForm

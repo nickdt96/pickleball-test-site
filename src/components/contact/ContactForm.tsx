@@ -21,10 +21,10 @@ const ContactForm = ({
           mb={3}
           mt={4}
           display="flex"
-          flexDirection={dealerForm ? "row" : "column"}
+          flexDirection={{ xs: "column", md: dealerForm ? "row" : "column" }}
           width={1}
         >
-          <Box mr={2} width={dealerForm ? 1 / 2 : 1} mb={dealerForm ? 0 : 3}>
+          <Box mr={2} width={{ xs: 1, md: dealerForm ? 1/2 : 1 }} mb={{ xs: 3, md: dealerForm ? 0 : 3 }}>
             <Controller
               name="firstName"
               control={formControl}
@@ -41,7 +41,7 @@ const ContactForm = ({
               )}
             />
           </Box>
-          <Box width={dealerForm ? 1 / 2 : 1}>
+          <Box width={{ xs: 1, md: dealerForm ? 1/2 : 1 }}>
             <Controller
               name="lastName"
               control={formControl}
@@ -96,16 +96,14 @@ const ContactForm = ({
               />
             </Box>
             <Box
-              //mb={3}
-              //mt={4}
               display="flex"
-              flexDirection={dealerForm ? "row" : "column"}
+              flexDirection={{ xs: "column" ,md: dealerForm ? "row" : "column" }}
               width={1}
             >
               <Box
-                mr={2}
-                width={dealerForm ? 3 / 5 : 1}
-                mb={dealerForm ? 0 : 3}
+                mr={{ xs: 0, md: 2 }}
+                width={{ xs: 1, md: dealerForm ? 3/5 : 1 }}
+                mb={{ xs: 3, md: dealerForm ? 0 : 3 }}
               >
                 <Controller
                   name="city"
@@ -123,7 +121,7 @@ const ContactForm = ({
                   )}
                 />
               </Box>
-              <Box mb={3} mr={2} width={1 / 5}>
+              <Box mb={3} mr={2} width={{ xs: 1, md: dealerForm ? 1/5 : 1 }}>
                 <Controller
                   name="state"
                   control={formControl}
@@ -140,7 +138,7 @@ const ContactForm = ({
                   )}
                 />
               </Box>
-              <Box mb={3} width={1 / 5}>
+              <Box mb={3} width={{ xs: 1, md: dealerForm ? 1/5 : 1 }}>
                 <Controller
                   name="zipCode"
                   control={formControl}
@@ -160,15 +158,14 @@ const ContactForm = ({
             </Box>
             <Box
               mb={3}
-              //mt={4}
               display="flex"
-              flexDirection={dealerForm ? "row" : "column"}
+              flexDirection={{ xs: "column", md: dealerForm ? "row" : "column" }}
               width={1}
             >
               <Box
                 mr={2}
-                width={dealerForm ? 1 / 2 : 1}
-                mb={dealerForm ? 0 : 3}
+                width={{ xs: 1, md: dealerForm ? 1/2 : 1 }}
+                mb={{ xs: 3, md: dealerForm ? 0 : 3 }}
               >
                 <Controller
                   name="phoneNumber"
@@ -189,7 +186,7 @@ const ContactForm = ({
 
               <Box
                 //mr={2}
-                width={dealerForm ? 1 / 2 : 1}
+                width={{ xs: 1, md: dealerForm ? 1/2 : 1 }}
                 mb={dealerForm ? 0 : 3}
               >
                 <Controller
