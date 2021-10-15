@@ -38,7 +38,7 @@ const ProductListing = () => {
       //query: "product_type:'9MM' ", //AND tag:'aeropress' OR tag:'espresso'",
       query: "",
       sortBy: "ID",
-      first: 2
+      first: 4
     }
 
     client.product.fetchQuery(query).then((products) => {
@@ -95,7 +95,6 @@ const ProductListing = () => {
   return (
     <>
       <Products loadMoreItems={handleLoadMoreItems} />
-      {/*<Cart />*/}
     </>
   )
 }
