@@ -67,7 +67,7 @@ export const brand: any = {
     palette: {
       type: "light",
       primary: {
-        main: "#3c3b6e",
+        main: "#EAEAEA",
       },
       secondary: {
         main: "#b22234",

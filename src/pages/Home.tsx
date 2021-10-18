@@ -27,7 +27,7 @@ const Home = () => {
             mt={2} 
           >
             <Box style={{ opacity: "1" }} justifyItems="center" display="center" alignContent="center">
-              <Typography variant="h2" style={{ fontWeight: fontWeights.bold }}>
+              <Typography variant="h2" style={{ fontWeight: fontWeights.bold, textAlign: "center" }}>
                 Roberson Cartridge Company
               </Typography>
               <Box justifyContent="center" display="flex">
@@ -36,7 +36,12 @@ const Home = () => {
                 </Typography>
               </Box>
               <Box justifyContent="center" display="flex" mt={6}>
-                <Box width={{ xs: 1, md: 1/3 }}>
+                <Box width={{ xs: 1, md: 1/3 }} p={1}>
+                  <RccFormButton onClick={() => history.push("/shop")}>
+                    Shop
+                  </RccFormButton>
+                </Box>
+                <Box width={{ xs: 1, md: 1/3 }} p={1}>
                   <RccFormButton onClick={() => history.push("/contact")}>
                     Contact Us
                   </RccFormButton>
