@@ -37,7 +37,7 @@ function App() {
             <Route exact path="/contact" component={Contact}/>
             <Route exact path="/cart" component={Cart}/>
           </Switch>
-          <Footer />
+          {/*<Footer />*/}
         </BrowserRouter>
       </Provider>
     </ThemeProvider>

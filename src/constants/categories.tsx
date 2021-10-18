@@ -4,8 +4,12 @@ export const categories = [
     value: "accessories",
     children: [
       {
+        name: "All",
+        value: "accessories"
+      },
+      {
         name: "Caps",
-        value: "caps",
+        value: "caps"
       }
     ]
   },
@@ -14,17 +18,29 @@ export const categories = [
     value: "centerFire",
     children: [
       {
+        name: "All",
+        value: "centerFire"
+      },
+      {
         name: ".17 Caliber",
-        value: ".17",
+        value: ".17"
       },
       {
         name: ".20 Caliber",
-        value: ".20",
+        value: ".20"
+      },
+      {
+        name: "7mm",
+        value: "7mm"
+      },
+      {
+        name: "8mm",
+        value: "8mm"
       },
       {
         name: "9mm",
-        value: "9mm",
-      }
+        value: "9mm"
+      },
     ]
   },
   {
@@ -41,5 +57,5 @@ export const categories = [
     name: "Custom",
     value: "custom",
     children: []
-  },
+  }
 ];

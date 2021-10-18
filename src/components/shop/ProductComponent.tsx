@@ -41,27 +41,28 @@ export default function ProductComponent(props: IProductProps) {
   return (
     <Grid xs={12} md={3}>
       <Box mx={2} mb={4}>
-        <Card style={{ minHeight: "350px", maxHeight: "350px" }}>
+        <Card>
           <CardActionArea>
             <Box
-              style={{ minHeight: "150px", maxHeight: "150px" }}
+              style={{ minHeight: "300px", maxHeight: "300px" }}
               display="flex"
               justifyContent="center"
+              flexDirection="column"
             >
-              <Box my={2}>
+              <Box my={2} alignSelf="center" display="flex">
                 <img
                   src={variantImage.src}
                   alt=""
                   style={{ minHeight: "150px", maxHeight: "150px" }}
                 />
               </Box>
-            </Box>
-            <Box display="flex" justifyContent="center" mt={2}>
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                  {product.title}
-                </Typography>
-              </CardContent>
+              <Box display="flex" justifyContent="center" mt={1} style={{ overflow: "hidden" }}>
+                <CardContent>
+                  <Typography variant="h5">
+                    {product.title}
+                  </Typography>
+                </CardContent>
+              </Box>
             </Box>
           </CardActionArea>
           <CardActions style={{ display: "block" }}>
@@ -76,21 +77,22 @@ export default function ProductComponent(props: IProductProps) {
               <Box
                 mt={2}
                 style={{
-                  //padding: brand.spacing[4],
                   marginRight: brand.spacing[1]
                 }}
                 py={2}
               >
                 <Box display="flex" flexDirection="row" alignItems="center">
                   <Box flexGrow={1} alignContent="left" mx={5}>
-                    <Typography variant="h4" color="primary">${variant.price}</Typography>
+                    <Typography variant="h4" color="primary">
+                      ${variant.price}
+                    </Typography>
                   </Box>
                   <Box>
                     <TextField
                       type="number"
                       style={{ width: "95px" }}
                       InputProps={{
-                        inputProps: { min: 50 },
+                        inputProps: { min: 50 }
                       }}
                       size="small"
                       defaultValue={50}
