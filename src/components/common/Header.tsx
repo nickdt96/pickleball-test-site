@@ -102,7 +102,7 @@ const Header = () => {
                 Contact
               </RccNavButton>
               <ShoppingCartIcon
-                
+                style={{paddingTop: "3px"}}
                 onClick={(event: any) => handleClick(event, "cart")}
               >
                 Cart
