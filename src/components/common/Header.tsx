@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Badge,
   Box,
   Hidden,
   Menu,
@@ -10,7 +11,7 @@ import {
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { RccNavButton } from "./Buttons";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/index.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
@@ -101,12 +102,14 @@ const Header = () => {
               >
                 Contact
               </RccNavButton>
-              <ShoppingCartIcon
-                style={{paddingTop: "3px"}}
-                onClick={(event: any) => handleClick(event, "cart")}
-              >
-                Cart
-              </ShoppingCartIcon>
+              <Badge badgeContent={1} color="error">
+                <ShoppingCartIcon
+                  style={{paddingTop: "3px"}}
+                  onClick={(event: any) => handleClick(event, "cart")}
+                >
+                  Cart
+                </ShoppingCartIcon>
+              </Badge>
             </Hidden>
           </Box>
         </Box>
