@@ -3,6 +3,7 @@ import {
     PRODUCTS_FETCHED,
     CHECKOUT_CREATED,
     SHOP_INFO_FETCHED,
+    CHANGE_CART_ITEMS,
     ShopifyState,
     ShopifyActionTypes,
 } from "./types";
@@ -12,14 +13,13 @@ const initialState: ShopifyState = {
     cart: null,
     products: null,
     shop: null,
+    cartItems: null,
 };
 
 export function shopifyReducer(
     state = initialState,
     action: ShopifyActionTypes
 ): ShopifyState {
-    console.log("action.type -> ", action.type);
-    console.log("action.payload -> ", action.payload);
     switch (action.type) {
         case CLIENT_CREATED:
             return { ...state, client: action.payload.client };
@@ -29,6 +29,8 @@ export function shopifyReducer(
             return { ...state, cart: action.payload.cart };
         case SHOP_INFO_FETCHED:
             return { ...state, shop: action.payload.shop };
+        case CHANGE_CART_ITEMS:
+            return { ...state, cartItems: action.payload.cartItems };
         default:
             return state;
     }

@@ -15,7 +15,7 @@ import logo from "../../assets/images/index.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const Header = () => {
+const Header = ({ setShowCart }:{ setShowCart: (arg0: boolean) => void}) => {
   // TODO - Collapse the items into a hamburger menu for mobile.  mmmkay?
 
   const history = useHistory();
@@ -105,7 +105,8 @@ const Header = () => {
               <Badge badgeContent={1} color="error">
                 <ShoppingCartIcon
                   style={{paddingTop: "3px", color: "black" }}
-                  onClick={(event: any) => handleClick(event, "cart")}
+                  //onClick={(event: any) => handleClick(event, "cart")}
+                  onClick={() => setShowCart(true)}
                 >
                   Cart
                 </ShoppingCartIcon>

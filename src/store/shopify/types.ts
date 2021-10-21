@@ -4,12 +4,14 @@ export const CLIENT_CREATED = "CLIENT_CREATED";
 export const PRODUCTS_FETCHED = "PRODUCTS_FETCHED";
 export const CHECKOUT_CREATED = "CHECKOUT_CREATED";
 export const SHOP_INFO_FETCHED = "SHOP_INFO_FETCHED";
+export const CHANGE_CART_ITEMS = "CHANGE_CART_ITEMS";
 
 export interface ShopifyState {
     client: Client | null;
     shop: Shop | null;
     cart: Cart | null;
     products: Product[] | null;
+    cartItems: Cart | null;
 }
 
 export interface ClientCreatedAction {
@@ -40,8 +42,16 @@ export interface CheckoutCreatedAction {
     };
 }
 
+export interface ChangeCartItemsAction {
+    type: typeof CHANGE_CART_ITEMS;
+    payload: {
+        cartItems: any;
+    };
+}
+
 export type ShopifyActionTypes =
     | ClientCreatedAction
     | ProductsFetchedAction
     | CheckoutCreatedAction
-    | ShopInfoFetchedAction;
+    | ShopInfoFetchedAction
+    | ChangeCartItemsAction;

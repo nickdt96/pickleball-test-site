@@ -1,5 +1,6 @@
 import { store } from "..";
-import { LineItem } from "shopify-buy";
+import { LineItem, Cart } from "shopify-buy";
+import { CHANGE_CART_ITEMS } from "./types";
 
 export function addVariantToCart(variantId: string | number, quantity: number) {
   const { shopify } = store.getState();
@@ -13,7 +14,11 @@ export function addVariantToCart(variantId: string | number, quantity: number) {
   if (cart && client) {
     const checkoutId = cart.id;
     console.log(` checkoutId -> ${JSON.stringify(checkoutId)}`);
-    client.checkout.addLineItems(checkoutId, lineItemsToAdd);
+    console.log(` lineItemsToAdd -> ${JSON.stringify(lineItemsToAdd)}`);
+    client.checkout.addLineItems(checkoutId, lineItemsToAdd).then((checkout) => {
+        console.log(` checkout -> ${JSON.stringify(checkout)}`);
+        store.dispatch({ type: CHANGE_CART_ITEMS, payload: { cartItems: checkout } });
+    });
   }
 }
 
