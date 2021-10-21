@@ -67,7 +67,8 @@ export const brand: any = {
     palette: {
       type: "light",
       primary: {
-        main: "#EAEAEA",
+        //main: "#EAEAEA",
+        main: "#3c3b6e"
       },
       secondary: {
         main: "#b22234",
@@ -76,7 +77,7 @@ export const brand: any = {
         black: "#fff"
       }
     },
-    spacing: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
+    spacing: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 50, 60, 70, 80, 90, 100],
     overrides: {
       MuiAppBar: { 
         root: { 

@@ -24,6 +24,7 @@ import {
 } from "@material-ui/core";
 import { RccCartButton, RccNavButton } from "../common/Buttons";
 import { brand } from "../../constants/brand";
+import { Controller, useForm } from "react-hook-form";
 
 interface IProductProps {
   product: Product;
@@ -37,6 +38,20 @@ export default function ProductComponent(props: IProductProps) {
   const variantImage = selectedVariantImage || product.images[0];
   const variant = selectedVariant || product.variants[0];
   const variantQuantity = selectedVariantQuantity || 1;
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors }
+  } = useForm({
+    defaultValues: {
+      variantId: variant.id,
+      quantity: 50
+    }
+  });
+  const onSubmit = (data: any) => {
+    addVariantToCart(data.variantId, data.quantity)
+  }
 
   return (
     <Grid xs={12} md={3}>
@@ -56,55 +71,78 @@ export default function ProductComponent(props: IProductProps) {
                   style={{ minHeight: "150px", maxHeight: "150px" }}
                 />
               </Box>
-              <Box display="flex" justifyContent="center" mt={1} style={{ overflow: "hidden" }}>
+              <Box
+                display="flex"
+                justifyContent="center"
+                mt={1}
+                style={{ overflow: "hidden" }}
+              >
                 <CardContent>
-                  <Typography variant="h5">
-                    {product.title}
-                  </Typography>
+                  <Typography variant="h5">{product.title}</Typography>
                 </CardContent>
               </Box>
             </Box>
           </CardActionArea>
           <CardActions style={{ display: "block" }}>
-            <Box display="flex" flexDirection="column" justifyItems="center">
-              <Box>
-                <RccCartButton
-                  onClick={() => addVariantToCart(variant.id, variantQuantity)}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Box display="flex" flexDirection="column" justifyItems="center">
+                <Box>
+                  <RccCartButton
+                    type="submit"
+                  >
+                    Add to Cart
+                  </RccCartButton>
+                </Box>
+                <Box
+                  mt={2}
+                  style={{
+                    marginRight: brand.spacing[1]
+                  }}
+                  py={2}
                 >
-                  Add to Cart
-                </RccCartButton>
-              </Box>
-              <Box
-                mt={2}
-                style={{
-                  marginRight: brand.spacing[1]
-                }}
-                py={2}
-              >
-                <Box display="flex" flexDirection="row" alignItems="center">
-                  <Box flexGrow={1} alignContent="left" mx={5}>
-                    <Typography variant="h4" color="primary">
-                      ${variant.price}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <TextField
-                      type="number"
-                      style={{ width: "95px" }}
-                      InputProps={{
-                        inputProps: { min: 50 }
-                      }}
-                      size="small"
-                      defaultValue={50}
-                      variant="outlined"
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
+                  <Box display="flex" flexDirection="row" alignItems="center">
+                    <Box flexGrow={1} alignContent="left" mx={5}>
+                      <Typography variant="h4" color="primary">
+                        ${variant.price}
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Controller
+                        control={control}
+                        name="variantId"
+                        render={({ field: { onChange } }) => (
+                          <TextField
+                            style={{ display: "none" }}
+                            name="variantId"
+                          />
+                        )}
+                      />
+                      <Controller
+                        control={control}
+                        name="quantity"
+                        render={({ field: { onChange } }) => (
+                          <TextField
+                            type="number"
+                            style={{ width: "95px" }}
+                            InputProps={{
+                              inputProps: { min: 50 }
+                            }}
+                            size="small"
+                            defaultValue={50}
+                            variant="outlined"
+                            name="quantity"
+                            onChange={onChange}
+                            InputLabelProps={{
+                              shrink: true
+                            }}
+                          />
+                        )}
+                      />
+                    </Box>
                   </Box>
                 </Box>
               </Box>
-            </Box>
+            </form>
           </CardActions>
         </Card>
       </Box>

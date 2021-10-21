@@ -1,7 +1,13 @@
-import { Button, ButtonProps, Typography } from "@material-ui/core"
-import { brand } from "../../constants/brand"
+import { Button, ButtonProps, Typography } from "@material-ui/core";
+import { brand } from "../../constants/brand";
 
-export const RccNavButton = ({ children, onClick }: { children: any; onClick: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void }) => {
+export const RccNavButton = ({
+  children,
+  onClick
+}: {
+  children: any;
+  onClick: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void;
+}) => {
   return (
     <Button
       fullWidth
@@ -18,10 +24,18 @@ export const RccNavButton = ({ children, onClick }: { children: any; onClick: (a
         {children}
       </Typography>
     </Button>
-  )
-}
+  );
+};
 
-export const RccCartButton = ({ children, onClick }: { children: any; onClick: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void }) => {
+export const RccCartButton = ({
+  children,
+  onClick,
+  type = "button",
+}: {
+  children: any;
+  onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void;
+  type?: any;
+}) => {
   return (
     <Button
       fullWidth
@@ -32,15 +46,22 @@ export const RccCartButton = ({ children, onClick }: { children: any; onClick: (
         marginRight: brand.spacing[1]
       }}
       onClick={onClick}
+      type={type}
     >
       <Typography variant="subtitle2" style={{ color: "#fff" }}>
         {children}
       </Typography>
     </Button>
-  )
-}
+  );
+};
 
-export const RccFormButton = ({ children, onClick }: { children: any; onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void }) => {
+export const RccFormButton = ({
+  children,
+  onClick
+}: {
+  children: any;
+  onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void;
+}) => {
   return (
     <Button
       fullWidth
@@ -57,10 +78,16 @@ export const RccFormButton = ({ children, onClick }: { children: any; onClick?: 
         {children}
       </Typography>
     </Button>
-  )
-}
+  );
+};
 
-export const RccCancelButton = ({ children, onClick }: { children: any; onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void }) => {
+export const RccCancelButton = ({
+  children,
+  onClick
+}: {
+  children: any;
+  onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void;
+}) => {
   return (
     <Button
       fullWidth
@@ -68,18 +95,22 @@ export const RccCancelButton = ({ children, onClick }: { children: any; onClick?
       style={{
         height: "45px",
         padding: brand.spacing[3],
-        marginRight: brand.spacing[1],
+        marginRight: brand.spacing[1]
       }}
       onClick={onClick}
     >
-      <Typography variant="subtitle2">
-        {children}
-      </Typography>
+      <Typography variant="subtitle2">{children}</Typography>
     </Button>
-  )
-}
+  );
+};
 
-export const RccActionButton = ({ children, onClick }: { children: any; onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void }) => {
+export const RccActionButton = ({
+  children,
+  onClick
+}: {
+  children: any;
+  onClick?: (arg0: React.MouseEvent<HTMLElement>, arg1?: string) => void;
+}) => {
   return (
     <Button
       fullWidth
@@ -92,9 +123,7 @@ export const RccActionButton = ({ children, onClick }: { children: any; onClick?
       color="primary"
       onClick={onClick}
     >
-      <Typography variant="subtitle2">
-        {children}
-      </Typography>
+      <Typography variant="subtitle2">{children}</Typography>
     </Button>
-  )
-}
+  );
+};

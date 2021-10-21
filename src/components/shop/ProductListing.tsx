@@ -55,18 +55,19 @@ const ProductListing = () => {
     store.dispatch({ type: SHOP_INFO_FETCHED, payload: { shop } });
 
     // cart stuff here
-    /*
-    client.checkout.create().then((res) => {
-      console.log(` res -> checkout create -> ${JSON.stringify(res)}`);
+    
+    client.checkout.create().then((cart) => {
+      console.log(` cart -> checkout create -> ${JSON.stringify(cart)}`);
+      store.dispatch({ type: CHECKOUT_CREATED, payload: { cart } });
     });
 
     //client.checkout.addLineItems("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8wYTE5MTY3OWM4ZmJmMGVjNzNiMDIwMWJmODJhNmZkNT9rZXk9MGViNGMwNTFhNWI1ZjFhMGQ4MzI4ZDg3YjNlZGQzMDI=",[{ variantId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY5MDgxMDQyNzgxOTM=", quantity: 1 }]);
 
-    client.checkout.addLineItems("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8wYTE5MTY3OWM4ZmJmMGVjNzNiMDIwMWJmODJhNmZkNT9rZXk9MGViNGMwNTFhNWI1ZjFhMGQ4MzI4ZDg3YjNlZGQzMDI=", [{variantId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MDYwNjUwNDYxNjExMw==", quantity: 22}])
-      .then((checkoutAdd) => {
-        console.log(` checkoutAdd -> ${JSON.stringify(checkoutAdd)}`);
-      });
-    */
+    //client.checkout.addLineItems("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8wYTE5MTY3OWM4ZmJmMGVjNzNiMDIwMWJmODJhNmZkNT9rZXk9MGViNGMwNTFhNWI1ZjFhMGQ4MzI4ZDg3YjNlZGQzMDI=", [{variantId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MDYwNjUwNDYxNjExMw==", quantity: 22}])
+    //  .then((checkoutAdd) => {
+    //    console.log(` checkoutAdd -> ${JSON.stringify(checkoutAdd)}`);
+    //  });
+    
 
     //console.log(client.checkout.fetch("Z2lkOi8vc2hvcGlmeS9DaGVja291dC8wYTE5MTY3OWM4ZmJmMGVjNzNiMDIwMWJmODJhNmZkNT9rZXk9MGViNGMwNTFhNWI1ZjFhMGQ4MzI4ZDg3YjNlZGQzMDI="));
   }

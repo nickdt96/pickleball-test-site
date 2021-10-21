@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ backgroundColor: "#EAEAEA"}}>
       <Menu
         id="about-menu"
         anchorEl={anchorEl}
@@ -104,7 +104,7 @@ const Header = () => {
               </RccNavButton>
               <Badge badgeContent={1} color="error">
                 <ShoppingCartIcon
-                  style={{paddingTop: "3px"}}
+                  style={{paddingTop: "3px", color: "black" }}
                   onClick={(event: any) => handleClick(event, "cart")}
                 >
                   Cart

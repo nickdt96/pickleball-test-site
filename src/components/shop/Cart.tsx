@@ -9,6 +9,9 @@ export default function CartComponent() {
     const cartUI = useSelector((state: RootState) => state.cartUI);
     const { cart } = shopify;
     const { isCartOpen } = cartUI;
+    console.log(` shopify -> ${JSON.stringify(shopify)}`);
+    console.log(` cart -> ${JSON.stringify(cart)}`);
+    console.log(` isCartOpen -> ${JSON.stringify(isCartOpen)}`);
     return (
         <div className={`Cart ${isCartOpen ? "Cart--open" : ""}`}>
             <header className="Cart__header">
