@@ -1,85 +1,170 @@
 import * as React from "react";
-import LineItem from "./LineItemComponent";
 import { RootState } from "../../store";
 import { setCartOpen } from "../../store/cartUI/actions";
 import { useSelector } from "react-redux";
-import { Box, Drawer } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Divider,
+  Grid,
+  Link,
+  List,
+  ListItem,
+  ListItemAvatar,
+  Typography
+} from "@material-ui/core";
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeLineItemFromCart
+} from "../../store/shopify/actions";
+import { brand } from "../../constants/brand";
+import { useHistory } from "react-router";
 
 export default function CartComponent() {
   const shopify = useSelector((state: RootState) => state.shopify);
   const cartUI = useSelector((state: RootState) => state.cartUI);
   const { cart, client, cartItems } = shopify;
   const { isCartOpen } = cartUI;
-  console.log(` shopify -> ${JSON.stringify(shopify)}`);
-  console.log(` cart -> ${JSON.stringify(cart)}`);
-  console.log(` isCartOpen -> ${JSON.stringify(isCartOpen)}`);
-  console.log(` client.checkout -> ${JSON.stringify(client?.checkout)}`);
-  console.log(` cartItems -> ${JSON.stringify(cartItems)}`);
-  const [state, setState] = React.useState({
-    right: false
-  });
-  const toggleDrawer =
-    (anchor: any, open: boolean) => (event: { type: string; key: string }) => {
-      if (
-        event.type === "keydown" &&
-        (event.key === "Tab" || event.key === "Shift")
-      ) {
-        return;
-      }
+  let cartItems2: any = cartItems;
+  const history = useHistory();
 
-      setState({ ...state, [anchor]: open });
-    };
   return (
-    <div className={`Cart ${isCartOpen ? "Cart--open" : ""}`}>
-      <header className="Cart__header">
-        <h2>Your cart</h2>
-        <button onClick={() => setCartOpen(false)} className="Cart__close">
-          ×
-        </button>
-      </header>
-      <ul className="Cart__line-items">
-        {cart?.lineItems.map((lineItem) => {
-          return <LineItem key={lineItem.id.toString()} lineItem={lineItem} />;
-        })}
-      </ul>
-      <footer className="Cart__footer">
-        <div className="Cart-info clearfix">
-          <div className="Cart-info__total Cart-info__small">Subtotal</div>
-          <div className="Cart-info__pricing">
-            <span className="pricing">$ {cart?.subtotalPrice}</span>
-          </div>
-        </div>
-        <div className="Cart-info clearfix">
-          <div className="Cart-info__total Cart-info__small">Taxes</div>
-          <div className="Cart-info__pricing">
-            {/* <span className="pricing">$ {cart.totalTax}</span> */}
-          </div>
-        </div>
-        <div className="Cart-info clearfix">
-          <div className="Cart-info__total Cart-info__small">Total</div>
-          <div className="Cart-info__pricing">
-            {/* <span className="pricing">$ {cart.totalPrice}</span> */}
-          </div>
-        </div>
-        <div className="Cart-info clearfix">
-          <div className="Cart-info__total Cart-info__small">
-            Donation Amount
-          </div>
-          <div className="Cart-info__pricing">
-            <span className="pricing">
-              {/* ~$ {(cart.totalPrice * 0.35).toFixed(2)} */}
-            </span>
-          </div>
-        </div>
-        <button
-          className="Cart__checkout button"
-          onClick={() => {
-            window.open(cart?.checkoutUrl);
-          }}
-        >
-          Checkout
-        </button>
-      </footer>
-    </div>
+    <>
+      <Box ml={5} mt={4}>
+        <Grid container>
+          <Grid item xs={7}>
+            {cartItems?.lineItems.map((lineItem: any) => {
+              return (
+                <>
+                  <List>
+                    <ListItem alignItems="flex-start">
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        alignItems="center"
+                      >
+                        <Box>
+                          <ListItemAvatar>
+                            {lineItem.variant.image ? (
+                              <img
+                                src={lineItem.variant.image.src}
+                                alt={`${lineItem.title} product shot`}
+                                style={{ minHeight: "90px", maxHeight: "90px" }}
+                              />
+                            ) : (
+                              <></>
+                            )}
+                          </ListItemAvatar>
+                        </Box>
+                        <Box ml={4}>
+                          <Typography variant="h5">{lineItem.title}</Typography>
+                          <Box mt={2} display="flex" alignItems="center">
+                            <Button
+                              variant="outlined"
+                              onClick={() => decrementQuantity(lineItem)}
+                              size="small"
+                            >
+                              <Typography variant="h3" color="primary">
+                                -
+                              </Typography>
+                            </Button>
+                            <Box mx={4}>
+                              <Typography variant="h4">
+                                {lineItem.quantity}
+                              </Typography>
+                            </Box>
+                            <Button
+                              variant="outlined"
+                              onClick={() => incrementQuantity(lineItem)}
+                              size="small"
+                            >
+                              <Typography variant="h5" color="primary">
+                                +
+                              </Typography>
+                            </Button>
+                            <Box ml={3}>
+                              <Typography variant="h5" color="primary">
+                                $
+                                {(
+                                  lineItem.quantity *
+                                  parseFloat(lineItem.variant.price)
+                                ).toFixed(2)}
+                              </Typography>
+                            </Box>
+                            <Button
+                              onClick={() =>
+                                removeLineItemFromCart(lineItem.id)
+                              }
+                            >
+                              <Typography variant="h5" color="primary">
+                                ×
+                              </Typography>
+                            </Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </ListItem>
+                    <Divider component="li" />
+                  </List>
+                </>
+              );
+            })}
+          </Grid>
+          <Grid item xs={4}>
+            <Box
+              mt={4}
+              style={{
+                border: `1px solid #CCC`,
+                borderRadius: brand.shape.borderRadius
+              }}
+              p={4}
+              mx={7}
+            >
+              <Typography variant="h3">Cart Summary</Typography>
+              <Divider />
+              <Box mt={3}>
+                <Typography variant="h6">
+                  Subtotal: ${cartItems?.subtotalPrice}
+                </Typography>
+              </Box>
+              <Box mt={3}>
+                <Typography variant="h6">
+                  Tax: ${cartItems2?.totalTax}
+                </Typography>
+              </Box>
+              <Box mt={3} mb={3}>
+                <Typography variant="h6">
+                  Shipping: ${cartItems2?.totalTax}
+                </Typography>
+              </Box>
+              <Divider />
+              <Box mt={3} display="flex">
+                <Box display="flex" flexGrow={1}>
+                  <Typography variant="h4">
+                    Total: ${cartItems2?.totalPrice}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Button
+                    onClick={() => console.log("Checking out")}
+                    variant="outlined"
+                  >
+                    <Typography variant="subtitle2" color="primary">
+                      Checkout
+                    </Typography>
+                  </Button>
+                </Box>
+              </Box>
+              <Box mt={4}>
+                <Typography variant="h6">
+                  <Link onClick={() => history.push("/shop")} style={{ cursor: "pointer"}}>Continue Shopping</Link>
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
   );
 }

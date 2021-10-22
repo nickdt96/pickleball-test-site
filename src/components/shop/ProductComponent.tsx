@@ -25,6 +25,7 @@ import {
 import { RccCartButton, RccNavButton } from "../common/Buttons";
 import { brand } from "../../constants/brand";
 import { Controller, useForm } from "react-hook-form";
+import { useSnackbar } from "notistack";
 
 interface IProductProps {
   product: Product;
@@ -38,6 +39,8 @@ export default function ProductComponent(props: IProductProps) {
   const variantImage = selectedVariantImage || product.images[0];
   const variant = selectedVariant || product.variants[0];
   const variantQuantity = selectedVariantQuantity || 1;
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
 
   const {
     handleSubmit,
@@ -50,7 +53,8 @@ export default function ProductComponent(props: IProductProps) {
     }
   });
   const onSubmit = (data: any) => {
-    addVariantToCart(data.variantId, data.quantity)
+    addVariantToCart(data.variantId, data.quantity);
+    enqueueSnackbar("Your item was added to the cart");
   }
 
   return (
