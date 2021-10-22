@@ -63,10 +63,26 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Box mt={10} bgcolor="white" height="20vh" p={6}>
-        <Typography variant="h5">
-          Home Detail Section
-        </Typography>
+      <Box style={{ opacity: ".8" }}
+        display="flex"
+        justifyContent="center"
+      >
+        <Box
+            mt={10} 
+            width={{ xs: 1, md: 4 / 5 }}
+            borderRadius={brand.shape.borderRadius}
+            bgcolor="white" 
+            height="20vh" 
+            p={6}
+            display="flex"
+            justifyContent="center">
+            <Typography 
+              variant="h5"
+              style={{ fontWeight: fontWeights.bold, textAlign: "center" }}>
+              Home Detail Section
+              ----- Categories -----
+            </Typography>
+        </Box>
       </Box>
     </HomePageImage>
   );
