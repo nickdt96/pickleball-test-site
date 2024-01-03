@@ -41,9 +41,9 @@ const Dealer = () => {
               <br /> If you have any questions about becoming a dealer, please
               contact us as follows: <br />
               <br />
-              Email: <a href="mailto: jeff@rccbrass.com">jeff@rccbrass.com</a>
+              Email: <a href="mailto: test@test.com">test@test.com</a>
               <br />
-              Phone: <a href="tel:+18063293130">(806) 329-3130</a>
+              Phone: <a href="tel:+19999999999">(806) 111-1111</a>
             </Typography>
           </Box>
         </Grid>
