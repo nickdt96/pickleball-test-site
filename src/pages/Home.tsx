@@ -41,24 +41,24 @@ const Home = () => {
               variant="h2"
               style={{ fontWeight: fontWeights.bold, textAlign: "center" }}
             >
-              Roberson Cartridge Company
+              Pickleballers
             </Typography>
             <Box justifyContent="center" display="flex">
               <Typography variant="h5">
-                We sell quality brass cartridges for any firearm.
+                Find a community of pickleball enthusiasts.
               </Typography>
             </Box>
             <Box justifyContent="center" display="flex" mt={6}>
               <Box width={{ xs: 1, md: 1 / 3 }} p={1}>
                 <RccFormButton onClick={() => history.push("/shop")}>
-                  Shop
+                  Rec Centers
                 </RccFormButton>
               </Box>
-              <Box width={{ xs: 1, md: 1 / 3 }} p={1}>
+              {/* <Box width={{ xs: 1, md: 1 / 3 }} p={1}>
                 <RccFormButton onClick={() => history.push("/contact")}>
                   Contact Us
                 </RccFormButton>
-              </Box>
+              </Box> */}
             </Box>
           </Box>
         </Box>

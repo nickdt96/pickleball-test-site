@@ -11,7 +11,7 @@ import {
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { RccNavButton } from "./Buttons";
-import logo from "../../assets/images/index.png";
+import logo from "../../assets/images/Pickleballers-logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
@@ -59,11 +59,12 @@ const Header = () => {
         >
           <Box flexGrow={1} display="flex">
             <Typography variant="h5" noWrap>
-              <Box m={4}>
-                <img src={logo} alt="" />
+              <Box m={2}>
+                <img src={logo} alt="" width={800} height={100}/>
               </Box>
             </Typography>
           </Box>
+
           <Box display="flex" justifyContent="space-between">
             <Hidden mdUp>
               <MenuIcon

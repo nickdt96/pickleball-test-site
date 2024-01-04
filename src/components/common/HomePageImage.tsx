@@ -1,5 +1,5 @@
 import { Box, useTheme } from "@material-ui/core";
-import backgroundImage from "../../assets/images/backgroundMain.jpg"
+import backgroundImage from "../../assets/images/pickleball.jpg"
 import backgroundImageMobile from "../../assets/images/backgroundMainMobile.jpg"
 
 const HomePageImage = (props: { children: any; }) => {
