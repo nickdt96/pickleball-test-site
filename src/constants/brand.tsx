@@ -2,6 +2,7 @@
 export const fonts = {
   body: '"Lato", sans-serif',
   heading: '"Lato", sans-serif',
+  sectionHeader: "KC Uppercut",
 };
 
 export const fontSizes = [

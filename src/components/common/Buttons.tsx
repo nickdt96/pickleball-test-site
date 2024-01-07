@@ -13,7 +13,7 @@ export const RccNavButton = ({
       fullWidth
       color="primary"
       style={{
-        backgroundColor: brand.palette.secondary.main,
+        backgroundColor: "#c3d12f",
         height: "30px",
         padding: brand.spacing[3],
         marginRight: brand.spacing[1]

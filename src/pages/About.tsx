@@ -10,20 +10,29 @@ import {
 import PageContainer from "../components/common/PageContainer";
 import { saveAs } from "file-saver";
 //import { SaveAltSharp } from "@material-ui/icons";
-import pdfFile from "../assets/documents/wildcatorderform.pdf";
-import { brand } from "../constants/brand";
+import pdfFile from "../assets/documents/USA-Pickleball-Rules-Summary-_2_7_23.pdf";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import aboutImage from "../assets/images/about.png";
+import aboutImage from "../assets/images/pickleball-paddles.png";
 import AboutUs from "./AboutUs";
 
 const About = () => {
+  
   const handleDownloadOrderForm = () => {
     saveAs(pdfFile);
   };
 
   return (
     <PageContainer title="About">
-      <Button onClick={() => handleDownloadOrderForm()}>Download</Button>
+      <Box width={5/6} mx={5}>
+          <Typography variant="h3" gutterBottom>About Us</Typography>
+
+          <Typography>
+          Welcome to our vibrant pickleball community, where passion meets paddle! At Pickleballers, we are dedicated to fostering the excitement and camaraderie that comes with the exhilarating sport of pickleball. Whether you're a seasoned player or just dipping your toes into this addictive game, our platform is designed to unite pickleball enthusiasts from all walks of life. We celebrate the unique blend of strategy, skill, and sheer joy that defines every match. Join us in embracing the fast-paced action on the court, sharing stories, and connecting with like-minded individuals who share a love for the unmistakable "pop" of the pickleball. Together, let's serve, volley, and score unforgettable moments both on and off the court. Welcome to the heart of pickleball passion! 
+          {/* <Link href="/about-us">Read More...</Link> */}
+          </Typography>
+        </Box>
+        <Box>
+        <Button onClick={() => handleDownloadOrderForm()}>Learn the Rules</Button>
       <Box display="flex" flexDirection="row" mb={4}>
         <Box width={1/6} px={3}>
           <img
@@ -34,19 +43,10 @@ const About = () => {
             alt="About Us"
           />
         </Box>
-        <Box width={5/6} mx={5}>
-          <Typography variant="h3" gutterBottom>About Us</Typography>
-
-          <Typography>
-            The problem a lot of people have is finding quality brass for the
-            caliber they shoot. We manufacture high-quality reloading brass
-            cartridges for vintage, obsolete, hard to find, and wildcat
-            calibers. All cartridges are made to SAAMI, CIP, or tolerances
-            provided to us. <Link href="/about-us">Read More...</Link>
-          </Typography>
-        </Box>
       </Box>
-      <Accordion>
+        </Box>
+      
+      {/* <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -198,7 +198,7 @@ const About = () => {
             set-up fee for all wildcats and a 100 piece minimum order.
           </Typography>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
     </PageContainer>
   );
 };

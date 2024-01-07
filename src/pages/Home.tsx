@@ -18,7 +18,7 @@ const Home = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Box
+        {/* <Box
           bgcolor="white"
           width={{ xs: 1, md: 4 / 5 }}
           style={{
@@ -31,7 +31,7 @@ const Home = () => {
           p={6}
           mt={2}
         >
-          <Box
+           <Box
             style={{ opacity: "1" }}
             justifyItems="center"
             display="center"
@@ -54,16 +54,17 @@ const Home = () => {
                   Rec Centers
                 </RccFormButton>
               </Box>
-              {/* <Box width={{ xs: 1, md: 1 / 3 }} p={1}>
+               <Box width={{ xs: 1, md: 1 / 3 }} p={1}>
                 <RccFormButton onClick={() => history.push("/contact")}>
                   Contact Us
                 </RccFormButton>
-              </Box> */}
+              </Box>
             </Box>
           </Box>
-        </Box>
+        </Box> */}
       </Box>
-      <Box style={{ opacity: ".8" }}
+
+      {/* <Box style={{ opacity: ".8" }}
         display="flex"
         justifyContent="center"
       >
@@ -83,7 +84,7 @@ const Home = () => {
               ----- Categories -----
             </Typography>
         </Box>
-      </Box>
+      </Box> */}
     </HomePageImage>
   );
 };
